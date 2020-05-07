@@ -6,6 +6,7 @@ class CreatePets < ActiveRecord::Migration[5.1]
       t.string :approximate_age
       t.string :sex
       t.references :shelter, foreign_key: true
+      # have to add in the description
     end
   end
 end
