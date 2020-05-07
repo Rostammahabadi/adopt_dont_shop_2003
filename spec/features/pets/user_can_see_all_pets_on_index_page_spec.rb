@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "pets index page", type: :feature do
   it "can see all pets titles" do
-    binding.pry
     shelter1 = Shelter.create(
       name: "Puppies",
       address: "123 west street",
