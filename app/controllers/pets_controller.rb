@@ -4,7 +4,7 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pets = Pet.where("shelter_id = #{params[:shelter_id]}")
+    @pets = Pet.find(params[:id])
   end
 
   def new
