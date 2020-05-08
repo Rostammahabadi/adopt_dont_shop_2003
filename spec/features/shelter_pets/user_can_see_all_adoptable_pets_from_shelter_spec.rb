@@ -33,6 +33,7 @@ RSpec.describe "shelter pets index page", type: :feature do
     )
 
     visit "/shelters/#{shelter1.id}/pets"
+
     expect(page).to have_content(pet1.image)
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.approximate_age)
