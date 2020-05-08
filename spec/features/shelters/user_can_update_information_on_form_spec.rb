@@ -18,19 +18,13 @@ RSpec.describe "user can create a new shelter with form", type: :feature do
     page.has_field?("state", with:"AZ")
     page.has_field?("zip", with:85257)
 
-    fill_in "shelter[name]", with: ""
-    fill_in "shelter[address]", with: ""
-    fill_in "shelter[city]", with: ""
-    fill_in "shelter[state]", with: ""
-    fill_in "shelter[zip]", with: ""
+    fill_in :name, with: "Puppies"
+    fill_in :address, with: "123 west st"
+    fill_in :city, with: "Arvada"
+    fill_in :state, with: "Colorado"
+    fill_in :zip, with: 80202
 
-    fill_in "shelter[name]", with: "Puppies"
-    fill_in "shelter[address]", with: "123 west st"
-    fill_in "shelter[city]", with: "Arvada"
-    fill_in "shelter[state]", with: "Colorado"
-    fill_in "shelter[zip]", with: 80202
-
-    click_on("Update Shelter")
+    click_button "Update Shelter"
 
     visit "/shelters/#{shelter1.id}/edit"
 

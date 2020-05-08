@@ -5,15 +5,15 @@ RSpec.describe "new form page can submit", type: :feature do
 
     visit "/shelters/new"
 
-    fill_in "shelter[name]", with: "Puppies"
-    fill_in "shelter[address]", with: "123 west st"
-    fill_in "shelter[city]", with: "Arvada"
-    fill_in "shelter[state]", with: "Colorado"
-    fill_in "shelter[zip]", with: 80202
+    fill_in "name", with: "Puppies"
+    fill_in "address", with: "123 west st"
+    fill_in "city", with: "Arvada"
+    fill_in "state", with: "Colorado"
+    fill_in "zip", with: 80202
 
-    expect(page).to have_selector("input[type=submit][value='Create Shelter']")
+    expect(page).to have_button("Create Shelter")
 
-    click_on('Create Shelter')
+    click_on(locator = 'Create Shelter')
 
     visit "/shelters"
 

@@ -1,14 +1,12 @@
-<form action="/shelters/"<%=@shelter.id%>"/pets", method:post>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label for="image">Image URL:</label>
-  <input type="text" name="image"></br>
-  <label for="name">Name:</label>
-  <input type="text" name="name"></br>
-  <label for="name">Description:</label>
-  <input type="text" name="description"></br>
-  <label for="name">Approximate Age:</label>
-  <input type="text" name="approximate_age"></br>
-  <label for="name">Sex ('female' or 'male'):</label>
-  <input type="text" name="sex"></br>
-  <input type="submit" value="Create Shelter">
-</form>
+<%= form_tag "/shelters/#{@shelter.id}/pets", method: :post%>
+<%= label_tag "image"%>
+<%= text_field_tag :image, nil, placeholder: 'Enter image URL here'%></br>
+<%= label_tag "name"%>
+<%= text_field_tag :name, nil, placeholder: 'Enter name here'%></br>
+<%= label_tag "decription"%>
+<%= text_field_tag :description, nil, placeholder: 'Enter description here'%></br>
+<%= label_tag "approximate_age"%>
+<%= text_field_tag :approximate_age, nil, placeholder: 'Enter approximate age here'%></br>
+<%= label_tag "sex"%>
+<%= text_field_tag :sex, nil, placeholder: "('female' or 'male')"%></br>
+<%= submit_tag "Create Pet" %>

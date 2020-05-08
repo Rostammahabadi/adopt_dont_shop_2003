@@ -4,19 +4,24 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pet = Pet.find(params[:id])
+    @pets = Pet.where("shelter_id = #{params[:shelter_id]}")
   end
 
   def new
-    @shelter = Pet.find(params[:shelter_id])
+    @shelter = get_shelter
   end
 
   def create
-    shetler = Shelter.find(params[:shelter_id])
+    shelter = get_shelter
     shelter.pets.create(pet_params)
+    redirect_to "/shelters/#{shelter.id}/pets"
   end
 
   private
+
+  def get_shelter
+    Shelter.find(params[:shelter_id])
+  end
 
   def pet_params
     params.permit(:image,:name,:approximate_age,:sex,:description)

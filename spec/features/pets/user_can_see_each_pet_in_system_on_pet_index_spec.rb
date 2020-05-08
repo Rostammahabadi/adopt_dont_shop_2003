@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "shelter pets index page", type: :feature do
-  it "can see all pets that can be adopted from that shelter with that shelter id" do
+RSpec.describe "pets index page", type: :feature do
+  it "can see all pets" do
     shelter1 = Shelter.create(
       name: "Puppies",
       address: "123 west street",
@@ -32,11 +32,16 @@ RSpec.describe "shelter pets index page", type: :feature do
     sex: "Male"
     )
 
-    visit "/shelters/#{shelter1.id}/pets"
+    visit "/pets"
+
     expect(page).to have_content(pet1.image)
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.approximate_age)
     expect(page).to have_content(pet1.sex)
 
+    expect(page).to have_content(pet2.image)
+    expect(page).to have_content(pet2.name)
+    expect(page).to have_content(pet2.approximate_age)
+    expect(page).to have_content(pet2.sex)
   end
 end
