@@ -4,7 +4,7 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pets = Pet.where("shelter_id = #{params[:shelter_id]}")
+    @pets = Pet.find(params[:id])
   end
 
   def new
@@ -15,6 +15,21 @@ class PetsController < ApplicationController
     shelter = get_shelter
     shelter.pets.create(pet_params)
     redirect_to "/shelters/#{shelter.id}/pets"
+  end
+
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def update
+    pet = Pet.find(params[:id])
+    pet.update(pet_params)
+    redirect_to "/pets/#{pet.id}"
+  end
+
+  def destroy
+    Pet.destroy(params[:id])
+    redirect_to "/pets"
   end
 
   private

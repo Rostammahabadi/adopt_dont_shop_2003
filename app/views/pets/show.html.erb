@@ -1,8 +1,11 @@
-<h1> All Adoptable Pets </h1>
+<h1> Pet </h1>
 
-<% @pets.each do |pet| %>
-  <%= pet.image %></br>
-  <%= pet.name %></br>
-  <%= pet.approximate_age %></br>
-  <%= pet.sex %></br>
-<% end %>
+  <%= @pets.image %></br>
+  <%= @pets.name %></br>
+  <%= @pets.description %></br>
+  <%= @pets.approximate_age %></br>
+  <%= @pets.sex %></br>
+  <%# <%= @pets.adopable %>
+
+<%= button_to "Update Pet", {:action=>"edit"}, :method=> :get %>
+<%= button_to "Delete Pet", {:action=>"destroy"}, :method => :delete%>

@@ -1,0 +1,8 @@
+<h1> All Adoptable Pets From "<%= Shelter.find(@param).name%>"</h1>
+
+<% @pets.each do |pet| %>
+  <%= pet.image %></br>
+  <h3><%= pet.name %></h3></br>
+  <p><%= pet.approximate_age %></p></br>
+  <p><%= pet.sex %></p></br>
+<% end %>
