@@ -8,4 +8,5 @@
   <p><%=pet.sex%></p>
   <p><%=Shelter.where("id = #{pet.shelter_id}")[0].name%></p>
   <p><%= link_to "Update Pet", "/pets/#{pet.id}/edit" %></p>
+  <p><%= link_to "Delete Pet", "/pets/#{pet.id}", :method => :delete %></p>
 <%end%>
