@@ -11,7 +11,8 @@ class ShelterPetsController < ApplicationController
   def create
     shelter = get_shelter
     shelter.pets.create(shelter_pet_params)
-
+  end
+  
   private
 
   def get_shelter
