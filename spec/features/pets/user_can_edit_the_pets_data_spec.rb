@@ -26,13 +26,27 @@ RSpec.describe "user can update pet", type: :feature do
     sex: "Male"
     )
 
-    visit "/pets/#{pet1.id}/edit"
+    visit "/pets/#{pet1.id}/"
+
+    has_link?("Update Pet")
+    click_on("Update Pet")
+    expect(current_path).to eq("/pets/#{pet1.id}/edit")
+
+    has_field?("image")
+    has_field?("name")
+    has_field?("description")
+    has_field?("approximate_age")
+    has_field?("sex")
 
     fill_in :name, with: "Shashta"
-
+    fill_in :image, with: "url"
+    fill_in :approximate_age, with: 3
+    has_button?("Update Pet")
     click_on("Update Pet")
 
     expect(current_path).to eq("/pets/#{pet1.id}")
     expect(page).to have_content("Shashta")
+    expect(page).to have_content("url")
+    expect(page).to have_content(3)
   end
 end
