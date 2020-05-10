@@ -10,8 +10,11 @@ class ShelterPetsController < ApplicationController
 
   def create
     shelter = get_shelter
-    shelter.pets.create(shelter_pet_params)
-    redirect_to "/shelters/#{shelter.id}/pets"
+    shelter.pets.new(shelter_pet_params)
+    if pet.save
+      redirect_to "/shelters/#{shelter.id}/pets"
+    else
+      render :new
   end
 
   private
