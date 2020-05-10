@@ -37,11 +37,12 @@ RSpec.describe "shelter pets index page", type: :feature do
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.approximate_age)
     expect(page).to have_content(pet1.sex)
+    expect(page).to have_content(Shelter.where("id = #{pet1.shelter_id}")[0].name)
 
     expect(page).to have_content(pet2.image)
     expect(page).to have_content(pet2.name)
     expect(page).to have_content(pet2.approximate_age)
     expect(page).to have_content(pet2.sex)
-
+    expect(page).to have_content(Shelter.where("id = #{pet2.shelter_id}")[0].name)
   end
 end

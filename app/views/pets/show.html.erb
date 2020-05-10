@@ -5,7 +5,7 @@
   <%= @pets.description %></br>
   <%= @pets.approximate_age %></br>
   <%= @pets.sex %></br>
-  <%# <%= @pets.adopable %>
+  <%= @pets.adoptable_status%>
 
-<%= button_to "Update Pet", {:action=>"edit"}, :method=> :get %>
-<%= button_to "Delete Pet", {:action=>"destroy"}, :method => :delete%>
+<%= link_to "Update Pet", {:action=>"edit"}, :method=> :get %>
+<%= link_to "Delete Pet", {:action=>"destroy"}, :method => :delete%>

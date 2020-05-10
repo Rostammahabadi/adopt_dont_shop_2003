@@ -1,12 +1,15 @@
+<h4><%= link_to "All Pets", "/shelters/#{@shelter.id}/pets" %></h4>
+
 <h1><%= @shelter.name %></h1>
 <p><%= @shelter.address %></p>
 <p><%=@shelter.city%></p>
 <p><%=@shelter.state%></p>
 <p><%=@shelter.zip%></p>
 
-<%= button_to "Update Shelter", {:action=>"edit"}, :method => :get%>
-<%= button_to "Delete Shelter", @shelters, :method => :delete%>
+<%= link_to "Update Shelter", {:action=>"edit"}, :method => :get%>
+<%= link_to "Delete Shelter", @shelters, :method => :delete%>
 
+<%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %>
 <% @shelter.pets.each do |pet| %>
   <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
   <p><%= pet.description %></p>

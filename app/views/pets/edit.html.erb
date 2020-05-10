@@ -11,5 +11,7 @@
  <%= text_field_tag :approximate_age, nil, placeholder: 'Enter approximate age here'%></br>
  <%= label_tag "sex"%>
  <%= text_field_tag :sex, nil, placeholder: "('female' or 'male')"%></br>
+ <%= label_tag "adoptable status" %>
+ <%= text_field_tag :adoptable_status, nil, placeholder: "Adoptable or pending adoption" %></br>
  <%= submit_tag "Update Pet" %>
  <% end %>

@@ -19,12 +19,12 @@ RSpec.describe "show page has delete button and can delete shelter", type: :feat
 
     visit "/shelters/#{shelter1.id}"
 
-    expect(page).to have_selector(:link_or_button, 'Delete Shelter')
+    has_link?("Delete Shelter")
 
     click_on('Delete Shelter')
 
-    visit "/shelters"
-
+    expect(current_path).to eq("/shelters")
+    expect(page).to_not have_content(shelter1.name)
     expect(page).to have_content(shelter2.name)
   end
 end
