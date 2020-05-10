@@ -1,5 +1,6 @@
 <h1> All Adoptable Pets From "<%= Shelter.find(@param).name %>"</h1>
-
+</br>
+<%= link_to "Create Pet", "/shelters/#{@param}/pets/new" %>
 <% @pets.each do |pet| %>
   <h3><%=link_to "#{pet.name}", "/pets/#{pet.id}"%>
   <%= link_to "Update Pet", "/pets/#{pet.id}/edit"%>
