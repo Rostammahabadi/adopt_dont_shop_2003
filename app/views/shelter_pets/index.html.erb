@@ -1,11 +1,11 @@
 <h1> All Adoptable Pets From "<%= Shelter.find(@param).name %>"</h1>
-
+</br>
+<%= link_to "Create Pet", "/shelters/#{@param}/pets/new" %>
 <% @pets.each do |pet| %>
-  <%=link_to "#{pet.name}", "/pets/#{pet.id}"%></br>
+  <h3><%=link_to "#{pet.name}", "/pets/#{pet.id}"%>
+  <%= link_to "Update Pet", "/pets/#{pet.id}/edit"%>
+    <%= link_to "Delete Pet", "/pets/#{pet.id}", :method => :delete %></h3></br>
   <%= "Image: #{pet.image}" %></br>
   <%= "Approximate Age: #{pet.approximate_age}" %></br>
   <%= "Female or Male: #{pet.sex}" %></br>
 <% end %>
-
-<%# <%= link_to "Delete", "/shelters/#{shelter.id}/pets" method: :destroy %>
-<%# <%= link_to "Edit", "/pets/#{pet.id}/edit" %>

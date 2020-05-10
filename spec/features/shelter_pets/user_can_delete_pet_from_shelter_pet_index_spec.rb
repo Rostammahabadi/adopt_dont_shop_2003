@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Pet Links", type: :feature do
-  it "can click pets on shelter show to see that pet's show page" do
+RSpec.describe "Pet Delete From Shelter Pets Index Page", type: :feature do
+  it "user can delete pet from shelter pets index page" do
     shelter1 = Shelter.create(
       name: "Puppies",
       address: "123 west street",
@@ -33,16 +33,11 @@ RSpec.describe "Pet Links", type: :feature do
     )
 
     visit "/shelters/#{shelter1.id}/pets"
+    has_link?("Delete Pet")
+    click_link("Delete Pet", match: :first)
 
-    has_link?("Adeline")
-    click_link("Adeline")
-    expect(current_path).to eq("/pets/#{pet1.id}")
-
-    visit "/pets/"
-
-    has_link?("Adeline")
-    has_link?("Joshua")
-    click_link("Adeline")
-    expect(current_path).to eq("/pets/#{pet1.id}")
+    expect(current_path).to eq("/pets")
+    expect(page).to_not have_content(pet1)
+    expect(page).to have_content(pet2.name)
   end
 end

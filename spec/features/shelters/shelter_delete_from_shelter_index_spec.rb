@@ -15,5 +15,6 @@ RSpec.describe "Shelter Delete From Shelter Index Page", type: :feature do
     expect(page).to have_link("Delete Shelter")
     click_on("Delete Shelter")
     expect(current_path).to eq("/shelters")
+    expect(page).to_not have_content("#{shelter1.name}")
   end
 end

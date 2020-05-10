@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Pet Links", type: :feature do
-  it "can click pets on shelter show to see that pet's show page" do
+RSpec.describe "Pet Update From Pets Index Page", type: :feature do
+  it "user can update pet from pets index page" do
     shelter1 = Shelter.create(
       name: "Puppies",
       address: "123 west street",
@@ -33,16 +33,14 @@ RSpec.describe "Pet Links", type: :feature do
     )
 
     visit "/shelters/#{shelter1.id}/pets"
+    has_link?("Update Pet")
+    click_link("Update Pet", match: :first)
 
-    has_link?("Adeline")
-    click_link("Adeline")
-    expect(current_path).to eq("/pets/#{pet1.id}")
-
-    visit "/pets/"
-
-    has_link?("Adeline")
-    has_link?("Joshua")
-    click_link("Adeline")
-    expect(current_path).to eq("/pets/#{pet1.id}")
+    expect(current_path).to eq("/pets/#{pet1.id}/edit")
+    has_field?(:name)
+    has_field?(:description)
+    has_field?(:image)
+    has_field?(:approximate_age)
+    has_field?(:sex)
   end
 end
