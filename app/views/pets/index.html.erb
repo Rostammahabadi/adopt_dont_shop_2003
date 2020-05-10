@@ -2,9 +2,17 @@
 
 <%@pets.each do |pet|%>
   <p><%=pet.image%></p>
-  <h3><%=link_to "#{pet.name}", "/pets/#{pet.id}"%>
-    <%= link_to "Update Pet", "/pets/#{pet.id}/edit" %>
-    <%= link_to "Delete Pet", "/pets/#{pet.id}", :method => :delete %></h3>
+  <div class= "container">
+    <div class="item">
+      <h3><%=link_to "#{pet.name}", "/pets/#{pet.id}"%></h3>
+    </div>
+    <div class = "smaller_item">
+      (<%= link_to "Update Pet", "/pets/#{pet.id}/edit" %>
+    </div>
+    <div class = "delete_button">
+    /<%= link_to "Delete Pet", "/pets/#{pet.id}", :method => :delete %>)
+    </div>
+  </div>
   <p><%=pet.approximate_age%></p>
   <p><%=pet.sex%></p>
   <p><%=link_to "#{Shelter.where("id = #{pet.shelter_id}")[0].name}", "/shelters/#{pet.shelter_id}"%>
