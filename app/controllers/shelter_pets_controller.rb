@@ -14,21 +14,6 @@ class ShelterPetsController < ApplicationController
     redirect_to "/shelters/#{shelter.id}/pets"
   end
 
-  # def edit
-  #   @pet = Pet.find(params[:id])
-  # end
-  #
-  # def update
-  #   pet = Pet.find(params[:id])
-  #   pet.update(pet_params)
-  #   redirect_to "/pets/#{pet.id}"
-  # end
-  #
-  # def destroy
-  #   Pet.destroy(params[:id])
-  #   redirect_to "/pets"
-  # end
-
   private
 
   def get_shelter
@@ -36,6 +21,6 @@ class ShelterPetsController < ApplicationController
   end
 
   def shelter_pet_params
-    params.permit(:image, :name, :description, :approximate_age, :sex)
+    params.permit(:image, :name, :description, :approximate_age, :sex, :adoptable_status)
   end
 end
