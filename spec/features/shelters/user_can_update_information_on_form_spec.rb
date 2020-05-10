@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "user can create a new shelter with form", type: :feature do
-  it "can see create shelter form" do
+RSpec.describe "user can update shelter from show page", type: :feature do
+  it "can see form to update shelter from show page" do
     shelter1 = Shelter.create(
       name: "Puppies",
       address: "123 west street",
@@ -10,29 +10,35 @@ RSpec.describe "user can create a new shelter with form", type: :feature do
       zip: 85257
       )
 
-    visit "/shelters/#{shelter1.id}/edit"
+    visit "/shelters/#{shelter1.id}"
 
-    page.has_field?("name", with:'Puppies')
-    page.has_field?("address", with:"123 west street")
-    page.has_field?("city", with:"Scottsdale")
-    page.has_field?("state", with:"AZ")
-    page.has_field?("zip", with:85257)
+    has_link?("Update Shelter")
 
-    fill_in :name, with: "Puppies"
-    fill_in :address, with: "123 west st"
-    fill_in :city, with: "Arvada"
+    click_link("Update Shelter")
+
+    expect(current_path).to eq("/shelters/#{shelter1.id}/edit")
+
+    page.has_field?("name")
+    page.has_field?("address")
+    page.has_field?("city")
+    page.has_field?("state")
+    page.has_field?("zip")
+
+    fill_in :name, with: "Abby's Shelter"
+    fill_in :address, with: "995 22nd st"
+    fill_in :city, with: "Denver"
     fill_in :state, with: "Colorado"
-    fill_in :zip, with: 80202
+    fill_in :zip, with: 80203
 
     click_button "Update Shelter"
 
-    visit "/shelters/#{shelter1.id}/edit"
+    expect(current_path).to eq("/shelters/#{shelter1.id}")
 
-    page.has_text?("Puppies")
-    page.has_text?("123 west st")
-    page.has_text?("Arvada")
+    page.has_text?("Abby's Shelter")
+    page.has_text?("995 22nd st")
+    page.has_text?("Denver")
     page.has_text?("Colorado")
-    page.has_text?(80202)
+    page.has_text?(80203)
 
   end
 end
