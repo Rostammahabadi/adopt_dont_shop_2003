@@ -34,6 +34,11 @@ RSpec.describe "shelter name is dynamic on all pages", type: :feature do
 
     visit "/shelters"
     has_link?("Puppies")
-
+    click_link("Puppies")
+    expect(current_path).to eq("/shelters/#{shelter1.id}")
+    visit "/pets"
+    has_link?("Puppies")
+    click_link("Puppies")
+    expect(current_path).to eq("/shelters/#{shelter1.id}")
   end
 end
