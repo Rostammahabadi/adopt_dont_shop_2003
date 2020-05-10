@@ -1,11 +1,24 @@
 <h1> Pet </h1>
-
-  <%= @pets.image %></br>
-  <%= @pets.name %></br>
-  <%= @pets.description %></br>
-  <%= @pets.approximate_age %></br>
-  <%= @pets.sex %></br>
-  <%= @pets.adoptable_status%>
+<dl>
+  <dt>
+    <%= @pets.image %></br>
+  </dt>
+  <dd>
+    <%= @pets.name %></br>
+  </dd>
+  <dd>
+    <%= @pets.description %></br>
+  </dd>
+  <dd>
+    <%= @pets.approximate_age %></br>
+  </dd>
+  <dd>
+    <%= @pets.sex %></br>
+  </dd>
+  <dd>
+    <%= @pets.adoptable_status%>
+  </dd>
+</dl>
 
 <%= link_to "Update Pet", {:action=>"edit"}, :method=> :get %>
 <%= link_to "Delete Pet", {:action=>"destroy"}, :method => :delete%>
