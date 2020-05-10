@@ -15,7 +15,8 @@ RSpec.describe "pets show page", type: :feature do
     name: "Adeline",
     description: "Mastiff",
     approximate_age: 1,
-    sex: "female"
+    sex: "female",
+    adoptable_status: "adoptable"
     )
 
     pet2 = shelter1.pets.create(
@@ -23,7 +24,8 @@ RSpec.describe "pets show page", type: :feature do
     name: "Joshua",
     description: "Boxer",
     approximate_age: 12,
-    sex: "Male"
+    sex: "Male",
+    adoptable_status: "adoptable"
     )
 
     visit "/pets/#{pet1.id}"
@@ -32,7 +34,7 @@ RSpec.describe "pets show page", type: :feature do
     expect(page).to have_content(pet1.description)
     expect(page).to have_content(pet1.approximate_age)
     expect(page).to have_content(pet1.sex)
-    #expect(page).to have_content(pet1.adoptable)
+    expect(page).to have_content(pet1.adoptable_status)
 
 
   end
