@@ -32,33 +32,13 @@ RSpec.describe "Pet Links", type: :feature do
     sex: "Male"
     )
 
-    visit "/shelters/#{shelter1.id}"
+    visit "/shelters/#{shelter1.id}/pets"
 
     has_link?("Adeline")
-    click_link("Adeline")
 
-    expect(current_path).to eq("/pets/#{pet1.id}")
-  end
-  it "can click on pet through the pets page to see pet show page" do
-    shelter1 = Shelter.create(
-      name: "Puppies",
-      address: "123 west street",
-      city: "Scottsdale",
-      state: "AZ",
-      zip: 85257
-      )
+    visit "/pets/"
 
-    pet1 = shelter1.pets.create(
-    image: "post",
-    name: "Adeline",
-    approximate_age: 1,
-    sex: "female"
-    )
-
-    visit("/pets")
     has_link?("Adeline")
-    click_link("Adeline")
-
-    expect(current_path).to eq("/pets/#{pet1.id}")
+    has_link?("Joshua")
   end
 end
