@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "shelter name is dynamic on all pages", type: :feature do
-  it "can link to shelter on all pages" do
+RSpec.describe "pet name is dynamic on all pages", type: :feature do
+  it "can link to pet on all pages" do
     shelter1 = Shelter.create(
       name: "Puppies",
       address: "123 west street",
