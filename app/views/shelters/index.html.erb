@@ -1,7 +1,15 @@
 <%= link_to 'New Shelter', '/shelters/new' %>
 
 <% @shelters.each do |shelter| %>
-  <h3><a href="/shelters/<%=shelter.id%>"><%= shelter.name %></a>
-    <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit"%>
-      <%= link_to "Delete Shelter", "/shelters/#{shelter.id}", :method => :delete %></h3>
+  <div class= "container">
+    <div class="item">
+      <h3><a href="/shelters/<%=shelter.id%>"><%= shelter.name %></a>
+    </div>
+    <div class = "smaller_item">
+      (<%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit"%>
+    </div>
+    <div class = "delete_button">
+      /<%= link_to "Delete Shelter", "/shelters/#{shelter.id}", :method => :delete %></h3>)
+    </div>
+  </div>
 <% end %>
