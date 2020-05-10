@@ -3,10 +3,10 @@
 </link_to>
 <%@pets.each do |pet|%>
   <p><%=pet.image%></p>
-  <p><%=link_to "#{pet.name}", "/pets/#{pet.id}"%></p>
+  <h3><%=link_to "#{pet.name}", "/pets/#{pet.id}"%>
+    <%= link_to "Update Pet", "/pets/#{pet.id}/edit" %>
+    <%= link_to "Delete Pet", "/pets/#{pet.id}", :method => :delete %></h3>
   <p><%=pet.approximate_age%></p>
   <p><%=pet.sex%></p>
   <p><%=Shelter.where("id = #{pet.shelter_id}")[0].name%></p>
-  <p><%= link_to "Update Pet", "/pets/#{pet.id}/edit" %></p>
-  <p><%= link_to "Delete Pet", "/pets/#{pet.id}", :method => :delete %></p>
 <%end%>
